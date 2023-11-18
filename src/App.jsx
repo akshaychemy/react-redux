@@ -9,6 +9,8 @@ function App() {
   const [count, setCount] = useState(0)
   const [state,dispatch] =useReducer(ExampleReducer,ExampleReducer_INITIAL_STATE)
 
+//const { name,age } = useSelector((state) => state);
+
   console.log(state)
 
   const ExampleFunction =(e)=>{
@@ -25,7 +27,7 @@ function App() {
   return (
     <>
       <div>
-        <h5>user Data {state.name}</h5>
+        <h5>user Data {state.name} </h5>
       </div>
       <div className="card">
         <button onClick={ExampleFunction}>

@@ -1,5 +1,5 @@
 export const ExampleReducer_INITIAL_STATE={
-    name:'',
+    name:'name',
     age:0
 }
 
