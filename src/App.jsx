@@ -1,33 +1,37 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+
+//===redux part
+import { useContext, useReducer } from "react";
+import { useSelector } from "react-redux";
+import { ExampleReducer_INITIAL_STATE,ExampleReducer } from './reducer';
 
 function App() {
   const [count, setCount] = useState(0)
+  const [state,dispatch] =useReducer(ExampleReducer,ExampleReducer_INITIAL_STATE)
+
+  console.log(state)
+
+  const ExampleFunction =(e)=>{
+    console.log("clicked")
+    dispatch({
+      type:"PUT_DATA",
+      payload:{
+        name:"akshay",
+        age:25
+      }
+    })
+  }
 
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <h5>user Data {state.name}</h5>
       </div>
-      <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        <button onClick={ExampleFunction}>
+          Update 
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
